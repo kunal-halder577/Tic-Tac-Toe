@@ -19,6 +19,8 @@ Two Players can play this game or you can just play with yourself.
 
    Contributions are welcome to this project.
 
+   You just need basic DSA & Java Language knowledge to contribute on this project.
+
   #### If you are a first time contributor follow this steps -
   
   + First fork this repository.

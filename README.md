@@ -1,10 +1,8 @@
 # Tic-Tac-Toe
 
- This repository contains program file for a basic Tic-Tac-Toe Game that runs on console.
-
- There is a Option of Choosing the number of Players.
-
- Two Players can play this game or you can just with yourself.
+This repository contains program file for a basic Tic-Tac-Toe Game that runs on console.
+There is a Option for Choosing the number of Players.
+Two Players can play this game or you can just play with yourself.
 
 ### Language
 
@@ -12,14 +10,14 @@
 
 ### How to Run This
 
- Open any IDE that can run java and just run the src file.
++ Open any IDE that can run java and just run the src file.
 
- **Make sure that your file name and class name is same**
++ **Make sure that your file name and class name is same**
 
 
 ### How to Contribute to this project
 
-  Contributions are welcome to this project.
+   Contributions are welcome to this project.
 
   #### If you are a first time contributor follow this steps -
   
@@ -29,4 +27,5 @@
 
 ### Maintainer:
 
-    **This repository is maintained by kunal-halder577**
+   > **This repository is maintained by kunal-halder577**
+

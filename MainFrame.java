@@ -2,14 +2,18 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * This program will display a board and take user inputs to maintain a
+ * game of tic tac toe for the user. The game can be played by 1 or 2 players
+ * based on user input.
+ */
 public class MainFrame {
 
     public static void main(String[] args) {
 
 
         Scanner scan = new Scanner(System.in);
-        ArrayList<ArrayList<Integer>> board = new ArrayList<>(3);
+        ArrayList<ArrayList<Integer>> board = new ArrayList<>(3);           //ArrayList used to represent the game board
         char[][] board1 = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 
         // Initialising the arraylist
@@ -58,14 +62,19 @@ public class MainFrame {
             } else
                 System.out.println("Please give a valid input!!");
         }
-        if (playernumber == 2) {
+        if (playernumber == 2) {                 //Begin game using the 2 player method
             piecePlacer_2P(board1, player);
         }
-        if (playernumber == 1) {
+        if (playernumber == 1) {                 //Begin game using the 1 player method
             piecePlacer_1P(board1, player);
         }
     }
 
+    /**
+     * Method that represents a 2 Player board for the game
+     * @param board1 The current board being played on using a 2d array
+     * @param player The curent player that is taking there turn using a char
+     */
     static void piecePlacer_2P(char[][] board1, char player) {
 
         Scanner scan = new Scanner(System.in);
@@ -82,6 +91,7 @@ public class MainFrame {
                 else
                     System.out.println("Please give a valid input!!");
             }
+            //Checking players move and placing the correct X or O based on position
             for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                 for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
                     if (board1[rowIndex][colIndex] == position) {
@@ -103,6 +113,7 @@ public class MainFrame {
                     System.out.println(board1[rowIndex][colIndex] + " | " + board1[rowIndex][colIndex + 1] + " | " + board1[rowIndex][colIndex + 2]);
                 }
             }
+            //Variables to represent each players moves to calculate the winner based on position
             int XmoveCounter_Row = 0;
             int XmoveCounter_Col = 0;
             int XmoveCounter_D1 = 0;
@@ -111,7 +122,6 @@ public class MainFrame {
             int OmoveCounter_Col = 0;
             int OmoveCounter_D1 = 0;
             int OmoveCounter_D2 = 0;
-
             if (movesNumber >= 5) {
                 for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                     for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
@@ -132,6 +142,7 @@ public class MainFrame {
                         OmoveCounter_Row = 0;
                     }
                 }
+                //Updating the moveCounter for column based on what was placed in the position given by the user
                 int rowIndex = 0;
                 for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
 
@@ -154,6 +165,7 @@ public class MainFrame {
                         OmoveCounter_Col = 0;
                     }
                 }
+                //Updating the moveCounter for D1 based on what was placed in the position given by the user
                 int colIndex = 0;
                 for (int rowIndex1 = 0; rowIndex1 < board1.length && colIndex < board1[rowIndex1].length; rowIndex1++, colIndex++) {
                     if (board1[rowIndex1][colIndex] == 'X') {
@@ -162,7 +174,7 @@ public class MainFrame {
                         OmoveCounter_D1++;
                     }
                 }
-
+                //Updating the moveCounter for D2 based on what was placed in the position given by the user
                 int colIndex1 = board1[rowIndex].length - 1;
                 for (int rowIndex1 = 0; rowIndex1 < board1.length && colIndex1 >= 0; rowIndex1++, colIndex1--) {
                     if (board1[rowIndex1][colIndex1] == 'X') {
@@ -172,6 +184,7 @@ public class MainFrame {
                     }
                 }
             }
+            //Logic for the completion of the game for X winning O winning or a draw
             if (XmoveCounter_Row == 3 || XmoveCounter_Col == 3 || XmoveCounter_D1 == 3 || XmoveCounter_D2 == 3) {
                 System.out.println("PLayer X Won.");
                 break;
@@ -185,7 +198,11 @@ public class MainFrame {
             }
         }
     }
-
+    /**
+     * Method that respresents a 1 player game against the computer
+     * @param board1 The current board being played on using a 2d array
+     * @param player The curent player that is taking there turn using a char
+     */
     static void piecePlacer_1P(char[][] board1, char player) {
 
         Scanner scan = new Scanner(System.in);
@@ -211,7 +228,7 @@ public class MainFrame {
                     break;
                 }
             }
-
+            //Checking players move and placing the correct X or O based on position
             for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                 for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
                     if (board1[rowIndex][colIndex] == position) {
@@ -236,6 +253,7 @@ public class MainFrame {
                     System.out.println(board1[rowIndex][colIndex] + " | " + board1[rowIndex][colIndex + 1] + " | " + board1[rowIndex][colIndex + 2]);
                 }
             }
+            //Variables to represent each players moves to calculate the winner based on position
             int XmoveCounter_Row = 0;
             int XmoveCounter_Col = 0;
             int XmoveCounter_D1 = 0;
@@ -246,6 +264,7 @@ public class MainFrame {
             int OmoveCounter_D2 = 0;
 
             if (movesNumber >= 5) {
+                //Updating the moveCounter for Row based on what was placed in the position given by the user
                 for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                     for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
                         if (board1[rowIndex][colIndex] == 'X') {
@@ -265,6 +284,7 @@ public class MainFrame {
                         OmoveCounter_Row = 0;
                     }
                 }
+                //Updating the moveCounter for column based on what was placed in the position given by the user
                 int rowIndex = 0;
                 for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
 
@@ -287,6 +307,7 @@ public class MainFrame {
                         OmoveCounter_Col = 0;
                     }
                 }
+                //Updating the moveCounter for D1 based on what was placed in the position given by the user
                 int colIndex = 0;
                 for (int rowIndex1 = 0; rowIndex1 < board1.length && colIndex < board1[rowIndex1].length; rowIndex1++, colIndex++) {
                     if (board1[rowIndex1][colIndex] == 'X') {
@@ -295,7 +316,7 @@ public class MainFrame {
                         OmoveCounter_D1++;
                     }
                 }
-
+                //Updating the moveCounter for D2 based on what was placed in the position given by the user
                 int colIndex1 = board1[rowIndex].length - 1;
                 for (int rowIndex1 = 0; rowIndex1 < board1.length && colIndex1 >= 0; rowIndex1++, colIndex1--) {
                     if (board1[rowIndex1][colIndex1] == 'X') {
@@ -305,6 +326,7 @@ public class MainFrame {
                     }
                 }
             }
+            //Logic for the completion of the game for X winning O winning or a draw
             if (XmoveCounter_Row == 3 || XmoveCounter_Col == 3 || XmoveCounter_D1 == 3 || XmoveCounter_D2 == 3) {
                 System.out.println("PLayer X Won.");
                 break;

@@ -17,14 +17,14 @@ public class MainFrame {
         char[][] board1 = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 
         // Initialising the arraylist
-        for (int i = 0; i < 3; i++) {
-            board.add(new ArrayList<>());
+        for (int i = 0; i < 3; i++) {1
+            board.add(new ArrayList<>());                            //adding a new ArrayList object to a board
         }
         //Adding values
         int count = 1;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board.get(i).add(count);
+                board.get(i).add(count);   //It adds the current value of count to the ith row of the board using board.get(i).add(count)
                 ++count;
             }
         }
@@ -87,18 +87,18 @@ public class MainFrame {
                 System.out.print("Enter Position: ");
                 position = scan.next().charAt(0);
                 if (position == '1' || position == '2' || position == '3' || position == '4' || position == '5' || position == '6' || position == '7' || position == '8' || position == '9')
-                    break;
+                    break;                            //choosing the position number to enter the marking for the player 
                 else
                     System.out.println("Please give a valid input!!");
             }
             //Checking players move and placing the correct X or O based on position
             for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                 for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
-                    if (board1[rowIndex][colIndex] == position) {
-                        if (movesNumber % 2 != 0) {
+                    if (board1[rowIndex][colIndex] == position) {            // Check if the current position on the board matches the target position
+                        if (movesNumber % 2 != 0) {                          // Check if the number of moves is odd (to determine the current player)
                             board1[rowIndex][colIndex] = player;
                         } else {
-                            if (player == 'X') {
+                            if (player == 'X') {                              // Switch the player (X to O or O to X) if the number of moves is even
                                 board1[rowIndex][colIndex] = 'O';
                             } else if (player == 'O') {
                                 board1[rowIndex][colIndex] = 'X';
@@ -122,21 +122,21 @@ public class MainFrame {
             int OmoveCounter_Col = 0;
             int OmoveCounter_D1 = 0;
             int OmoveCounter_D2 = 0;
-            if (movesNumber >= 5) {
+            if (movesNumber >= 5) {       //checks if there have been at least 5 moves made. If there have not been, then the code does not need to check for a winner in the current row.
                 for (int rowIndex = 0; rowIndex < board1.length; rowIndex++) {
                     for (int colIndex = 0; colIndex < board1[rowIndex].length; colIndex++) {
-                        if (board1[rowIndex][colIndex] == 'X') {
+                        if (board1[rowIndex][colIndex] == 'X') {     //checks if the current cell in the board is an X. If it is, then the code increments the XmoveCounter_Row variable by 1
                             XmoveCounter_Row++;
-                        } else if (board1[rowIndex][colIndex] == 'O') {
+                        } else if (board1[rowIndex][colIndex] == 'O') {  //checks if the current cell in the board is an O. If it is, then the code increments the OmoveCounter_Row variable by 1
                             OmoveCounter_Row++;
                         }
                     }
-                    if (XmoveCounter_Row == 3)
+                    if (XmoveCounter_Row == 3)  //checks if the number of X's in the current row is 3. If it is, then the code breaks out of the loop and returns True, indicating that there is a winner
                         break;
                     else {
                         XmoveCounter_Row = 0;
                     }
-                    if (OmoveCounter_Row == 3)
+                    if (OmoveCounter_Row == 3)   //checks if the number of O's in the current row is 3. If it is, then the code breaks out of the loop and returns True, indicating that there is a winner
                         break;
                     else {
                         OmoveCounter_Row = 0;

@@ -17,7 +17,7 @@ public class MainFrame {
         char[][] board1 = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 
         // Initialising the arraylist
-        for (int i = 0; i < 3; i++) {1
+        for (int i = 0; i < 3; i++) {
             board.add(new ArrayList<>());                            //adding a new ArrayList object to a board
         }
         //Adding values

@@ -7,6 +7,7 @@ import java.util.Scanner;
  * game of tic tac toe for the user. The game can be played by 1 or 2 players
  * based on user input.
  */
+// Fuck you
 public class MainFrame {
 
     public static void main(String[] args) {

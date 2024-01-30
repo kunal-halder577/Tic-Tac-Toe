@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - master  # Define the branch to trigger the pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use the latest Ubuntu agent
+
+steps:
+- task: JavaToolInstaller@0  # Use this task to install the Java version
+  inputs:
+    versionSpec: '19'  # Specify the Java version (e.g., 11)
+    jdkArchitectureOption: 'x64'  # Specify the architecture
+
+- task: MavenAuthenticate@0  # Authenticate with Maven if required
+
+- task: Maven@3  # Use Maven task for building Java projects
+  inputs:
+    mavenPomFile: 'path/to/pom.xml'  # Path to your Maven POM file
+    goals: 'clean package'  # Maven goals to execute (e.g., clean, package)
+
+- task: PublishTestResults@2  # Publish test results
+  inputs:
+    testResultsFiles: '**/surefire-reports/*.xml'  # Path to test result files
+    testRunTitle: 'Java Tests'  # Title for the test run
+
+- task: PublishBuildArtifacts@1  # Publish build artifacts
+  inputs:
+    pathtoPublish: '$(System.DefaultWorkingDirectory)/path/to/artifacts'  # Path to the artifacts to publish
+    artifactName: 'java-app'  # Name of the artifact
